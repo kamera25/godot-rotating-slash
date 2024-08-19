@@ -14,3 +14,9 @@ config/name="godot-rotating-slash"
 run/main_scene="res://root.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1218
+window/size/viewport_height=685
+window/stretch/mode="viewport"
