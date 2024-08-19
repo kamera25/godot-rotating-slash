@@ -8,6 +8,11 @@ var _hp : int = MAX_HP
 signal change_hp( hp : int)
 signal dead
 
+func _ready() -> void:
+	_decrease_hp()
+	_decrease_hp()
+	_decrease_hp()
+
 
 # HPをMAXまで回復する
 func _cure_to_full() -> void:
