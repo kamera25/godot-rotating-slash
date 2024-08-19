@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpmu3ocn57tvc"]
+
+[ext_resource type="Texture2D" uid="uid://b1pqlfjyggr7f" path="res://Images/pipo-charachip021e.png" id="1_71c1r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ytv3"]
+atlas = ExtResource("1_71c1r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bui2n"]
+atlas = ExtResource("1_71c1r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ui5p"]
+atlas = ExtResource("1_71c1r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_22q25"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ytv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bui2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ui5p")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}]
+
+[node name="root" type="Node"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(637, 306)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_22q25")
+animation = &"back"
