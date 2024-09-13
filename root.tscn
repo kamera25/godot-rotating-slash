@@ -1,13 +1,13 @@
 [gd_scene load_steps=23 format=4 uid="uid://bpmu3ocn57tvc"]
 
-[ext_resource type="TileSet" uid="uid://ctmqnw8pktlk6" path="res://TileMap1.tres" id="1_3tfs0"]
+[ext_resource type="TileSet" uid="uid://ctmqnw8pktlk6" path="res://Resource/BaseTileMap.tres" id="1_3tfs0"]
 [ext_resource type="Texture2D" uid="uid://b1pqlfjyggr7f" path="res://Images/pipo-charachip021e.png" id="1_71c1r"]
-[ext_resource type="Script" path="res://PlayerCharacter.gd" id="1_mer0e"]
+[ext_resource type="Script" path="res://Script/PlayerCharacter.gd" id="1_mer0e"]
 [ext_resource type="Texture2D" uid="uid://btvqtshsrkii3" path="res://Images/sticon3b-3.png" id="4_nxhlk"]
-[ext_resource type="Script" path="res://HpEntityNode.gd" id="5_didg4"]
-[ext_resource type="Script" path="res://HeartUiPresenter.gd" id="5_vgluc"]
+[ext_resource type="Script" path="res://Script/HpEntityNode.gd" id="5_didg4"]
+[ext_resource type="Script" path="res://Script/HeartUiPresenter.gd" id="5_vgluc"]
 [ext_resource type="Texture2D" uid="uid://cstiwewb0iqv2" path="res://Images/sticon3a-2.png" id="6_q01vt"]
-[ext_resource type="Script" path="res://GameOverUiPresenter.gd" id="7_ausck"]
+[ext_resource type="Script" path="res://Script/GameOverUiPresenter.gd" id="7_ausck"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4o6cp"]
 atlas = ExtResource("1_71c1r")

@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://ctmqnw8pktlk6"]
 
 [ext_resource type="Texture2D" uid="uid://cifee0p8l441t" path="res://Images/[A]Grass1-Grass2_pipo.png" id="1_ij5su"]
-[ext_resource type="Texture2D" uid="uid://daklak0s8ifwb" path="res://[A]Water2_pipo.png" id="2_obxgb"]
+[ext_resource type="Texture2D" uid="uid://daklak0s8ifwb" path="res://Images/[A]Water2_pipo.png" id="2_gwt5o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qjvnh"]
 texture = ExtResource("1_ij5su")
@@ -56,7 +56,7 @@ texture_region_size = Vector2i(32, 32)
 7:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_apnyb"]
-texture = ExtResource("2_obxgb")
+texture = ExtResource("2_gwt5o")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0

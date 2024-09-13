@@ -9,9 +9,9 @@ signal change_hp( hp : int)
 signal dead
 
 func _ready() -> void:
-	_decrease_hp()
-	_decrease_hp()
-	_decrease_hp()
+	_decrease()
+	_decrease()
+	_decrease()
 
 
 # HPをMAXまで回復する
@@ -21,7 +21,7 @@ func _cure_to_full() -> void:
 
 
 # HPを1減らす
-func _decrease_hp() -> void:
+func _decrease() -> void:
 	_hp -= 1
 	
 	change_hp.emit( _hp )
