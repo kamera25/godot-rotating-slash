@@ -7,9 +7,12 @@ extends Node
 
 
 func _ready() -> void:
-	_hp.dead.connect( Callable( self, "_update_view" ))
+	_hp.change_hp.connect( Callable( self, "_dead" ))
 	
 	
-func _update_view() -> void:
-	_gameover_text.visible = true
-	_gameover_panel.visible = true
+func _dead( hp : int) -> void:
+	print(hp)
+	if hp <= 0:
+		print("hello")
+		_gameover_text.visible = true
+		_gameover_panel.visible = true
