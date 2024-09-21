@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bpmu3ocn57tvc"]
+[gd_scene load_steps=39 format=4 uid="uid://bpmu3ocn57tvc"]
 
 [ext_resource type="TileSet" uid="uid://ctmqnw8pktlk6" path="res://Resource/BaseTileMap.tres" id="1_3tfs0"]
 [ext_resource type="Texture2D" uid="uid://b1pqlfjyggr7f" path="res://Images/pipo-charachip021e.png" id="1_71c1r"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Script/HeartUiPresenter.gd" id="5_vgluc"]
 [ext_resource type="Texture2D" uid="uid://cstiwewb0iqv2" path="res://Images/sticon3a-2.png" id="6_q01vt"]
 [ext_resource type="Script" path="res://Script/GameOverUiPresenter.gd" id="7_ausck"]
+[ext_resource type="Script" path="res://GameOverHandler.gd" id="10_05fy8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4o6cp"]
 atlas = ExtResource("1_71c1r")
@@ -310,7 +311,6 @@ bbcode_enabled = true
 text = "[center][wave amp=50 freq=2]GameOver[/wave][/center]"
 
 [node name="GameOverPanel" type="Panel" parent="UI"]
-visible = false
 z_index = 300
 offset_left = -40.0
 offset_top = -13.0
@@ -326,9 +326,8 @@ _hp_sprites = [NodePath("../../UI/Heart1"), NodePath("../../UI/Heart2"), NodePat
 _normal_heart = ExtResource("4_nxhlk")
 _lost_heart = ExtResource("6_q01vt")
 
-[node name="GameOverUIPresenter" type="Node" parent="Presenter" node_paths=PackedStringArray("_hp", "_gameover_text", "_gameover_panel")]
+[node name="GameOverUIPresenter" type="Node" parent="Presenter" node_paths=PackedStringArray("_gameover_text", "_gameover_panel")]
 script = ExtResource("7_ausck")
-_hp = NodePath("../../Entitis/HP")
 _gameover_text = NodePath("../../UI/GameOverText")
 _gameover_panel = NodePath("../../UI/GameOverPanel")
 
@@ -336,3 +335,14 @@ _gameover_panel = NodePath("../../UI/GameOverPanel")
 
 [node name="HP" type="Node" parent="Entitis"]
 script = ExtResource("5_didg4")
+
+[node name="Manager" type="Node" parent="."]
+
+[node name="GameOverHandler" type="Node" parent="Manager" node_paths=PackedStringArray("_hp", "_presenter")]
+script = ExtResource("10_05fy8")
+_hp = NodePath("../../Entitis/HP")
+_presenter = NodePath("../../Presenter/GameOverUIPresenter")
+
+[node name="HealthRestorer" type="Node" parent="Manager"]
+
+[node name="DamageReceiver" type="Node" parent="Manager"]
