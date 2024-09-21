@@ -279,7 +279,8 @@ script = ExtResource("4_j68g2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy/Skall"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_idwe0")
-animation = &"walk_forward"
+animation = &"walk_back"
+frame_progress = 0.97562
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Skall"]
 shape = SubResource("RectangleShape2D_snsaq")
