@@ -7,6 +7,7 @@ class_name PlayerCharacter
 const SPEED = 300.0
 @onready var _animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
+
 func _process(_delta):
 	
 	if Input.is_action_pressed("ui_right"):

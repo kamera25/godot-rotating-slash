@@ -9,6 +9,7 @@ extends Node
 func _ready() -> void:
 	_hp.change_hp.connect( Callable( self, "_dead" ))
 
+# HPが0になった時の処理
 func _dead( hp : int) -> void:
 	if hp <= 0:
 		_presenter.dead()

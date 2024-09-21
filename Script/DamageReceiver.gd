@@ -3,7 +3,7 @@
 extends Node
 
 @export var hp : HPNode
-@export var enemies : Array[SkallCollision]
+@export var enemies : Array[EnemyCollision]
 
 
 func _ready() -> void:

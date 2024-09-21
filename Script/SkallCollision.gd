@@ -1,6 +1,6 @@
 # SkallCollision.gd
 # 回復アイテムのハートの振る舞いを記述
-extends Area2D
+extends EnemyCollision
 
 class_name SkallCollision
 
