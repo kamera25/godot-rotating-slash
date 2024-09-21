@@ -1,6 +1,6 @@
 extends Node
 
-@export var _hp : HPEntityNode
+@export var _hp : HPNode
 @export var _presenter : GameOverUiPresenter
 
 func _ready() -> void:

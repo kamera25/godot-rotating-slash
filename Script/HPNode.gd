@@ -2,11 +2,11 @@
 # HPの値を保管 および 値の操作を行うノード
 extends Node
 
-class_name HPEntityNode
+class_name HPNode
 
 const MAX_HP : int = 3
-
 var _hp : int = MAX_HP
+
 signal change_hp( hp : int )
 
 # HPの値が変更となった時に呼び出す

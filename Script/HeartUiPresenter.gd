@@ -1,6 +1,6 @@
 extends Node
 
-@export var _hp : HPEntityNode
+@export var _hp : HPNode
 @export var _hp_sprites : Array[Sprite2D]
 
 @export var _normal_heart : Texture
