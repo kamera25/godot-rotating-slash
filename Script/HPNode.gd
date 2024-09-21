@@ -15,13 +15,17 @@ func change( hit_point : int ) -> void:
 
 # Debug
 func _ready() -> void:
-	_decrease()
-	_decrease()
-	_decrease()
+	
+	await get_tree().create_timer(1).timeout
 
+
+# HPを完全回復
+func cure() -> void:
+	_hp = MAX_HP
+	change_hp.emit( _hp )
 
 # HPを1減らす
-func _decrease() -> void:
+func decrease() -> void:
 	_hp -= 1
 	change_hp.emit( _hp )
 	

@@ -1,15 +1,21 @@
-[gd_scene load_steps=39 format=4 uid="uid://bpmu3ocn57tvc"]
+[gd_scene load_steps=46 format=4 uid="uid://bpmu3ocn57tvc"]
 
 [ext_resource type="TileSet" uid="uid://ctmqnw8pktlk6" path="res://Resource/BaseTileMap.tres" id="1_3tfs0"]
 [ext_resource type="Texture2D" uid="uid://b1pqlfjyggr7f" path="res://Images/pipo-charachip021e.png" id="1_71c1r"]
 [ext_resource type="Script" path="res://Script/PlayerCharacter.gd" id="1_mer0e"]
+[ext_resource type="Script" path="res://Script/SkallBehavior.gd" id="4_j68g2"]
 [ext_resource type="Texture2D" uid="uid://btvqtshsrkii3" path="res://Images/sticon3b-3.png" id="4_nxhlk"]
 [ext_resource type="Texture2D" uid="uid://dykja1kxm0jku" path="res://Images/hone.png" id="5_34l4o"]
 [ext_resource type="Script" path="res://Script/HPNode.gd" id="5_didg4"]
 [ext_resource type="Script" path="res://Script/HeartUIPresenter.gd" id="5_vgluc"]
+[ext_resource type="Texture2D" uid="uid://cvd6137qet4we" path="res://Images/sticon3h-2.png" id="6_5fin5"]
 [ext_resource type="Texture2D" uid="uid://cstiwewb0iqv2" path="res://Images/sticon3a-2.png" id="6_q01vt"]
-[ext_resource type="Script" path="res://Script/GameOverUiPresenter.gd" id="7_ausck"]
+[ext_resource type="Script" path="res://Script/HeartNode.gd" id="6_sbnx2"]
+[ext_resource type="Script" path="res://Script/SkallCollision.gd" id="6_tgngw"]
+[ext_resource type="Script" path="res://Script/GameOverUIPresenter.gd" id="7_ausck"]
 [ext_resource type="Script" path="res://Script/GameOverHandler.gd" id="10_05fy8"]
+[ext_resource type="Script" path="res://Script/HealthRestorer.gd" id="14_rn2ma"]
+[ext_resource type="Script" path="res://DamageReceiver.gd" id="16_6ui4o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4o6cp"]
 atlas = ExtResource("1_71c1r")
@@ -123,18 +129,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ri7xy"]
 size = Vector2(70, 70)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lev8t"]
-atlas = ExtResource("5_34l4o")
-region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u41ai"]
-atlas = ExtResource("5_34l4o")
-region = Rect2(32, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fuu7i"]
-atlas = ExtResource("5_34l4o")
-region = Rect2(64, 96, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_6edtq"]
 atlas = ExtResource("5_34l4o")
 region = Rect2(0, 0, 32, 32)
@@ -146,6 +140,18 @@ region = Rect2(32, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7qgl"]
 atlas = ExtResource("5_34l4o")
 region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lev8t"]
+atlas = ExtResource("5_34l4o")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u41ai"]
+atlas = ExtResource("5_34l4o")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuu7i"]
+atlas = ExtResource("5_34l4o")
+region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qtmb6"]
 atlas = ExtResource("5_34l4o")
@@ -175,20 +181,6 @@ region = Rect2(64, 64, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lev8t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u41ai")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fuu7i")
-}],
-"loop": true,
-"name": &"walk_back",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_6edtq")
 }, {
 "duration": 1.0,
@@ -198,7 +190,21 @@ animations = [{
 "texture": SubResource("AtlasTexture_a7qgl")
 }],
 "loop": true,
-"name": &"walk_foward",
+"name": &"walk_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lev8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u41ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuu7i")
+}],
+"loop": true,
+"name": &"walk_forward",
 "speed": 5.0
 }, {
 "frames": [{
@@ -230,6 +236,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbvjl"]
+
 [node name="root" type="Node"]
 
 [node name="Map" type="Node" parent="."]
@@ -251,12 +259,12 @@ script = ExtResource("1_mer0e")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_22q25")
-animation = &"walk_right"
+animation = &"walk_back"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_snsaq")
 
-[node name="Area2D" type="Area2D" parent="Player"]
+[node name="Area2D" type="Area2D" parent="Player" groups=["Player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
 scale = Vector2(0.75, 0.93)
@@ -266,20 +274,35 @@ shape = SubResource("RectangleShape2D_ri7xy")
 
 [node name="Skall" type="CharacterBody2D" parent="Enemy"]
 position = Vector2(627, 271)
+script = ExtResource("4_j68g2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy/Skall"]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_idwe0")
-animation = &"walk_back"
+animation = &"walk_forward"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Skall"]
 shape = SubResource("RectangleShape2D_snsaq")
 
-[node name="Player" type="Area2D" parent="Enemy/Skall"]
+[node name="Area2D" type="Area2D" parent="Enemy/Skall"]
+script = ExtResource("6_tgngw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Skall/Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Skall/Area2D"]
 scale = Vector2(0.75, 0.93)
 shape = SubResource("RectangleShape2D_ri7xy")
+
+[node name="MapItem" type="Node2D" parent="."]
+
+[node name="Heart" type="Area2D" parent="MapItem"]
+position = Vector2(528, 376)
+scale = Vector2(2, 2)
+script = ExtResource("6_sbnx2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapItem/Heart"]
+shape = SubResource("RectangleShape2D_cbvjl")
+
+[node name="Sprite2D" type="Sprite2D" parent="MapItem/Heart"]
+texture = ExtResource("6_5fin5")
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -299,6 +322,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_nxhlk")
 
 [node name="GameOverText" type="RichTextLabel" parent="UI"]
+visible = false
 z_index = 360
 offset_left = 283.0
 offset_top = 290.0
@@ -311,6 +335,7 @@ bbcode_enabled = true
 text = "[center][wave amp=50 freq=2]GameOver[/wave][/center]"
 
 [node name="GameOverPanel" type="Panel" parent="UI"]
+visible = false
 z_index = 300
 offset_left = -40.0
 offset_top = -13.0
@@ -343,6 +368,12 @@ script = ExtResource("10_05fy8")
 _hp = NodePath("../../Entitis/HP")
 _presenter = NodePath("../../Presenter/GameOverUIPresenter")
 
-[node name="HealthRestorer" type="Node" parent="Manager"]
+[node name="HealthRestorer" type="Node" parent="Manager" node_paths=PackedStringArray("hp", "hearts")]
+script = ExtResource("14_rn2ma")
+hp = NodePath("../../Entitis/HP")
+hearts = [NodePath("../../MapItem/Heart")]
 
-[node name="DamageReceiver" type="Node" parent="Manager"]
+[node name="DamageReceiver" type="Node" parent="Manager" node_paths=PackedStringArray("hp", "enemies")]
+script = ExtResource("16_6ui4o")
+hp = NodePath("../../Entitis/HP")
+enemies = [NodePath("../../Enemy/Skall/Area2D")]
