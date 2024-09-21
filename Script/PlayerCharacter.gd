@@ -1,8 +1,10 @@
+# PlayerCharacter.gd
+# ユーザが操作する、キャラクターの動きの処理
 extends CharacterBody2D
 
+class_name PlayerCharacter
 
 const SPEED = 300.0
-
 @onready var _animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
 func _process(_delta):
@@ -31,3 +33,11 @@ func _physics_process( _delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
+	
+	
+# プレイヤーの動作を停止する(ゲームオーバで利用)
+func freeze() -> void:
+	_animated_sprite.stop()
+	set_process(false)
+	set_physics_process(false)
+	

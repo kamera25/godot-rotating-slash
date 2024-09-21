@@ -20,3 +20,9 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1218
 window/size/viewport_height=685
 window/stretch/mode="viewport"
+
+[file_customization]
+
+folder_colors={
+"res://Script/": "blue"
+}

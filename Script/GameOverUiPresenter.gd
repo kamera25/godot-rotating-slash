@@ -1,3 +1,5 @@
+# GameOverUIPresenter.gd
+# ゲームオーバーの画面を表示させる処理
 extends Node
 
 class_name GameOverUiPresenter

@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Script/GameOverUIPresenter.gd" id="7_ausck"]
 [ext_resource type="Script" path="res://Script/GameOverHandler.gd" id="10_05fy8"]
 [ext_resource type="Script" path="res://Script/HealthRestorer.gd" id="14_rn2ma"]
-[ext_resource type="Script" path="res://DamageReceiver.gd" id="16_6ui4o"]
+[ext_resource type="Script" path="res://Script/DamageReceiver.gd" id="16_6ui4o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4o6cp"]
 atlas = ExtResource("1_71c1r")
@@ -361,19 +361,20 @@ script = ExtResource("7_ausck")
 _gameover_text = NodePath("../../UI/GameOverText")
 _gameover_panel = NodePath("../../UI/GameOverPanel")
 
-[node name="Manager" type="Node" parent="."]
+[node name="Behaviors" type="Node" parent="."]
 
-[node name="GameOverHandler" type="Node" parent="Manager" node_paths=PackedStringArray("_hp", "_presenter")]
+[node name="GameOverHandler" type="Node" parent="Behaviors" node_paths=PackedStringArray("_hp", "_player", "_presenter")]
 script = ExtResource("10_05fy8")
 _hp = NodePath("../../Entitis/HP")
+_player = NodePath("../../Player")
 _presenter = NodePath("../../Presenter/GameOverUIPresenter")
 
-[node name="HealthRestorer" type="Node" parent="Manager" node_paths=PackedStringArray("hp", "hearts")]
+[node name="HealthRestorer" type="Node" parent="Behaviors" node_paths=PackedStringArray("hp", "hearts")]
 script = ExtResource("14_rn2ma")
 hp = NodePath("../../Entitis/HP")
 hearts = [NodePath("../../MapItem/Heart")]
 
-[node name="DamageReceiver" type="Node" parent="Manager" node_paths=PackedStringArray("hp", "enemies")]
+[node name="DamageReceiver" type="Node" parent="Behaviors" node_paths=PackedStringArray("hp", "enemies")]
 script = ExtResource("16_6ui4o")
 hp = NodePath("../../Entitis/HP")
 enemies = [NodePath("../../Enemy/Skall/Area2D")]
